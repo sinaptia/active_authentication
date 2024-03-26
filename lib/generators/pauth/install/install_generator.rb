@@ -3,6 +3,8 @@ class Pauth::InstallGenerator < Rails::Generators::Base
 
   source_root File.expand_path("templates", __dir__)
 
+  desc "Creates the User model, the pauth initializer, and adds the pauth route."
+
   def self.next_migration_number(dirname)
     ActiveRecord::Migration.new.next_migration_number 0
   end

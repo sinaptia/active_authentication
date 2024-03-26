@@ -1,0 +1,90 @@
+---
+es:
+  activerecord:
+    attributes:
+      user:
+        email: Email
+        password: Contraseña
+        password_confirmation: Repetir contraseña
+  pauth:
+    confirmations:
+      create:
+        success: Te enviaremos un email con las instrucciones para confirmar tu cuenta.
+      new:
+        email_confirmation_instructions: Enviar instrucciones de confirmación
+      set_user:
+        invalid_token: El token es inválido.
+      show:
+        success: Tu cuenta fue confirmada exitosamente.
+    failure:
+      already_signed_in: Ya iniciaste sesión.
+      form_errors: "%{errors} no permitieron guardar este elemento:"
+      locked: Tu cuenta fue bloqueada después de %{count} intentos fallidos. Te enviaremos un email con las instrucciones de desbloqueo.
+      unauthenticated: Tenés que iniciar sesión antes de continuar.
+    mailer:
+      email_confirmation_instructions:
+        confirm_email: Confirmar mi cuenta
+        confirm_email_below: 'Podés confirmar tu cuenta haciendo click en el siguiente link:'
+        hello: Hola, %{email}!
+        subject: Instrucciones de confirmación
+      password_reset_instructions:
+        hello: Hola, %{email}!
+        reset_password: Recuperar contraseña
+        reset_password_below: 'Podés recuperar tu contraseña haciendo click en el siguiente link:'
+        subject: Instrucciones de recuperación de contraseña
+      unlock_instructions:
+        hello: Hola, %{email}!
+        subject: Instrucciones de desbloqueo
+        unlock: Desbloquear cuenta
+        unlock_below: 'Podés desbloquear tu contraseña haciendo click en el siguiente link:'
+    passwords:
+      create:
+        success: Te enviaremos un email con las instrucciones de para recuperar tu contraseña.
+      edit:
+        set_new_password: Cambiar contraseña
+      new:
+        reset_password_instructions: Enviar instrucciones para recuperar contraseña
+      set_user:
+        invalid_token: El token es inválido.
+      update:
+        success: Tu contraseña fue actualizada exitosamente.
+    registrations:
+      create:
+        success: Te registraste exitosamente.
+      destroy:
+        success: Tu cuenta fue cancelada exitosamente.
+      edit:
+        cancel_account: Cancelar cuenta
+        confirm: "¿Estás seguro?"
+        danger_zone: Zona de peligro
+        edit_profile: Editar perfil
+        pending_confirmation: 'Tenés que confirmar tu nuevo email: %{unconfirmed_email}'
+        save: Guardar
+      new:
+        sign_up: Crear una cuenta
+      update:
+        success: Tu cuenta fue actualizada exitosamente.
+    sessions:
+      create:
+        invalid_email_or_password: Email o contraseña inválidos.
+        success: Inicio de sesión existoso.
+      destroy:
+        success: Cierre de sesión exitoso.
+      new:
+        sign_in: Iniciar sesión
+    shared:
+      links:
+        reset_password: Recuperar contraseña
+        send_email_confirmation_instructions: "¿No recibiste las instrucciones de confirmación?"
+        send_unlock_instructions: "¿No recibiste las instrucciones de desbloqueo?"
+        sign_in: Iniciar sesión
+        sign_up: Crear una cuenta
+    unlocks:
+      create:
+        success: Te enviaremos un email con las instrucciones de desbloqueo.
+      new:
+        unlock_instructions: Enviar instrucciones de desbloqueo
+      set_user:
+        invalid_token: El token es inválido.
+      show:
+        success: Tu cuenta fue desbloqueada exitosamente.

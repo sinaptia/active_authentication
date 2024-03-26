@@ -6,6 +6,10 @@ module Pauth
       included do
         generates_token_for :email_confirmation, expires_in: Pauth.email_confirmation_token_expires_in
 
+        normalizes :unconfirmed_email, with: -> { _1.strip.downcase }
+
+        validates :unconfirmed_email, format: {with: URI::MailTo::EMAIL_REGEXP}, allow_blank: true
+
         after_initialize do
           @set_unconfirmed_email = true
           @send_email_confirmation_instructions = true

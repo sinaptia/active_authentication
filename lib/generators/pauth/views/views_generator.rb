@@ -1,6 +1,8 @@
 class Pauth::ViewsGenerator < Rails::Generators::Base
   source_root File.expand_path("../../../../", __dir__)
 
+  desc "Generates pauth's views."
+
   class_option :views, aliases: "-v", type: :array, desc: "Views to generate (available: confirmations, passwords, registrations, sessions)"
 
   def copy_views

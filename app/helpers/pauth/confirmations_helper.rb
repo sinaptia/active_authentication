@@ -1,2 +1,0 @@
-module Pauth::ConfirmationsHelper
-end

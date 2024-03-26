@@ -76,6 +76,7 @@ en:
       links:
         reset_password: Reset password
         send_email_confirmation_instructions: Didn't receive confirmation instructions?
+        send_unlock_instructions: Didn't receive unlock instructions?
         sign_in: Sign in
         sign_up: Sign up
     unlocks:

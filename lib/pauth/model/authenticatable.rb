@@ -6,7 +6,9 @@ module Pauth
       included do
         has_secure_password
 
-        validates :email, presence: true, uniqueness: true
+        normalizes :email, with: -> { _1.strip.downcase }
+
+        validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}, presence: true, uniqueness: true
         validates :password, length: {minimum: Pauth.min_password_length}, allow_blank: true
       end
     end

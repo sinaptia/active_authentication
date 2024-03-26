@@ -2,7 +2,7 @@ module Pauth
   module Model
     extend ActiveSupport::Concern
 
-    CONCERNS = %i[authenticatable confirmable recoverable registerable trackable]
+    CONCERNS = %i[authenticatable confirmable lockable recoverable registerable trackable]
 
     class_methods do
       def authenticates
