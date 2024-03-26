@@ -1,0 +1,15 @@
+<% if controller_name != "sessions" %>
+  <p><%= link_to t(".sign_in"), new_session_path %></p>
+<% end %>
+
+<% if User.registerable? && controller_name != "registrations" %>
+  <p><%= link_to t(".sign_up"), new_registration_path %></p>
+<% end %>
+
+<% if User.recoverable? && controller_name != "registrations" && controller_name != "passwords" %>
+  <p><%= link_to t(".reset_password"), new_password_path %></p>
+<% end %>
+
+<% if User.confirmable? && controller_name != "confirmations" %>
+  <p><%= link_to t(".send_email_confirmation_instructions"), new_confirmation_path %></p>
+<% end %>

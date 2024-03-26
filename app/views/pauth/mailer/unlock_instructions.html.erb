@@ -1,0 +1,5 @@
+<p><%=t ".hello", email: @user.email %></p>
+
+<p><%=t ".unlock_below" %></p>
+
+<p><%= link_to t(".unlock"), unlock_url(token: @token) %></p>

@@ -1,0 +1,89 @@
+---
+en:
+  activerecord:
+    attributes:
+      user:
+        email: Email
+        password: Password
+        password_confirmation: Password confirmation
+  pauth:
+    confirmations:
+      create:
+        success: Email confirmation instructions will be sent to your email.
+      new:
+        email_confirmation_instructions: Send email confirmation instructions
+      set_user:
+        invalid_token: Email confirmation token is invalid.
+      show:
+        success: Your email has been successfully confirmed.
+    failure:
+      already_signed_in: You are already signed in.
+      form_errors: "%{errors} prohibited this user from being saved:"
+      locked: Your account has been locked after %{count} failed attempts. Unlock instructions will be sent to your email.
+      unauthenticated: You need to sign in or sign up before continuing.
+    mailer:
+      email_confirmation_instructions:
+        confirm_email: Confirm my account
+        confirm_email_below: 'You can confirm your account email by clicking the link below:'
+        hello: Hello, %{email}!
+        subject: Confirmation instructions
+      password_reset_instructions:
+        hello: Hello, %{email}!
+        reset_password: Reset your password
+        reset_password_below: 'You can reset your password by clicking the link below:'
+        subject: Password reset instructions
+      unlock_instructions:
+        hello: Hello, %{email}!
+        subject: Unlock instructions
+        unlock: Unlock your account
+        unlock_below: 'You can unlock your account by clicking the link below:'
+    passwords:
+      create:
+        success: Password reset instructions will be sent to your email.
+      edit:
+        set_new_password: Set new password
+      new:
+        reset_password_instructions: Send reset password instructions
+      set_user:
+        invalid_token: Password reset token is invalid.
+      update:
+        success: Your password has been successfully updated.
+    registrations:
+      create:
+        success: You have signed up successfully.
+      destroy:
+        success: Your account has been successfully cancelled.
+      edit:
+        cancel_account: Cancel account
+        confirm: Are you sure?
+        danger_zone: Danger zone
+        edit_profile: Edit profile
+        pending_confirmation: 'You need to confirm your new email address: %{unconfirmed_email}'
+        save: Save
+      new:
+        sign_up: Sign up
+      update:
+        success: Your account has been successfully updated.
+    sessions:
+      create:
+        invalid_email_or_password: Invalid email or password.
+        success: Signed in successfully.
+      destroy:
+        success: Signed out successfully.
+      new:
+        sign_in: Sign in
+    shared:
+      links:
+        reset_password: Reset password
+        send_email_confirmation_instructions: Didn't receive confirmation instructions?
+        sign_in: Sign in
+        sign_up: Sign up
+    unlocks:
+      create:
+        success: Unlock instructions will be sent to your email.
+      new:
+        unlock_instructions: Send unlock instructions
+      set_user:
+        invalid_token: Unlock token is invalid.
+      show:
+        success: Your account has been successfully unlocked.

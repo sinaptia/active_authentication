@@ -1,0 +1,14 @@
+<h1 class="text-4xl font-bold"><%=t ".email_confirmation_instructions" %></h1>
+
+<%= form_with url: confirmations_path do |form| %>
+  <div>
+    <%= form.label :email, t("activerecord.attributes.user.email") %>
+    <%= form.email_field :email %>
+  </div>
+
+  <div>
+    <%= form.submit t(".email_confirmation_instructions") %>
+  </div>
+<% end %>
+
+<%= render "pauth/shared/links" %>

@@ -1,0 +1,2 @@
+module Pauth::RegistrationsHelper
+end
