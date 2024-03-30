@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  pauth
+  active_authentication
   get "private", to: "main#private"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -18,5 +18,5 @@ if ActiveSupport::TestCase.respond_to?(:fixture_paths=)
 end
 
 class ActionDispatch::IntegrationTest
-  include Pauth::Test::Helpers
+  include ActiveAuthentication::Test::Helpers
 end

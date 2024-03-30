@@ -1,0 +1,35 @@
+<h1 class="text-4xl font-bold"><%=t ".sign_up" %></h1>
+
+<%= form_with model: @user, url: registrations_path, data: {turbo: false} do |form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation" class="px-3 py-2 mt-3 font-medium text-red-500 rounded-lg bg-red-50">
+      <h2><%=t "active_authentication.failure.form_errors", errors: pluralize(@user.errors.count, "error") %></h2>
+      <ul>
+        <% @user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :email %>
+    <%= form.email_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </div>
+
+  <div>
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation %>
+  </div>
+
+  <div>
+    <%= form.submit t(".sign_up") %>
+  </div>
+<% end %>
+
+<%= render "active_authentication/shared/links" %>

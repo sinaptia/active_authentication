@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-# Specify your gem's dependencies in pauth.gemspec.
+# Specify your gem's dependencies in active_authentication.gemspec.
 gemspec
 
 gem "puma"

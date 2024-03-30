@@ -1,11 +1,11 @@
-# Pauth
+# ActiveAuthentication
 
 A pure Rails authentication solution.
 
 ## Main features
 
 * Pure Rails implementation, uses [has_secure_password](https://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html#method-i-has_secure_password), [generates_token_for](https://api.rubyonrails.org/classes/ActiveRecord/TokenFor/ClassMethods.html#method-i-generates_token_for), [find_by_token_for](https://api.rubyonrails.org/classes/ActiveRecord/TokenFor/ClassMethods.html#method-i-find_by_token_for) and [authenticate_by](https://api.rubyonrails.org/classes/ActiveRecord/SecurePassword/ClassMethods.html#method-i-authenticate_by).
-* Pauth authenticates users and only users. If you need to authenticate other models you should be asking yourself if you shouldn't handle authorization differently.
+* ActiveAuthentication authenticates users and only users. If you need to authenticate other models you should be asking yourself if you shouldn't handle authorization differently.
 * Turn on/off the features you need by using concerns.
 
 ### Concerns
@@ -28,7 +28,7 @@ Planned concerns:
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "pauth"
+gem "active_authentication"
 ```
 
 And then execute:
@@ -40,7 +40,7 @@ $ bundle
 Or install it yourself as:
 
 ```bash
-$ gem install pauth
+$ gem install active_authentication
 ```
 
 ## Usage
@@ -48,10 +48,10 @@ $ gem install pauth
 After installing the gem, you need to generate the `User` model. To generate it, run:
 
 ```bash
-$ rails generate pauth:install
+$ rails generate active_authentication:install
 ```
 
-This command will generate the `User` model, add the `pauth` route, and generate an initializer (`config/initializers/pauth.rb`) where you can configure the gem. You will be able to configure the concerns you want for your application among other things.
+This command will generate the `User` model, add the `active_authentication` route, and generate an initializer (`config/initializers/active_authentication.rb`) where you can configure the gem. You will be able to configure the concerns you want for your application among other things.
 
 You will need to set up the default url options in your `config/environments/development.rb`:
 
@@ -65,7 +65,7 @@ Finally, run `rails db:migrate`.
 
 ### Filters and helpers
 
-Pauth comes with filters and helpers you can use in your controllers and views.
+ActiveAuthentication comes with filters and helpers you can use in your controllers and views.
 
 To protect actions from being accessed by unauthenticated users, use the `authenticate_user!` filter:
 
@@ -82,13 +82,13 @@ Similarly, you can use `current_user` to access the current authenticated user.
 The default views are good enough to get you started, but you'll want to customize them sooner than later. To copy the default views into your app, run the following command:
 
 ```bash
-$ rails generate pauth:views
+$ rails generate active_authentication:views
 ```
 
 If you're not using all the concerns, you might want to copy only the views you need. To do that, you can use the `--views` (`-v`) option:
 
 ```bash
-$ rails generate pauth:views -v sessions
+$ rails generate active_authentication:views -v sessions
 ```
 
 ## Contributing

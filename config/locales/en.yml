@@ -1,12 +1,6 @@
 ---
 en:
-  activerecord:
-    attributes:
-      user:
-        email: Email
-        password: Password
-        password_confirmation: Password confirmation
-  pauth:
+  active_authentication:
     confirmations:
       create:
         success: Email confirmation instructions will be sent to your email.
@@ -88,3 +82,9 @@ en:
         invalid_token: Unlock token is invalid.
       show:
         success: Your account has been successfully unlocked.
+  activerecord:
+    attributes:
+      user:
+        email: Email
+        password: Password
+        password_confirmation: Password confirmation

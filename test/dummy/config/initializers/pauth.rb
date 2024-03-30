@@ -1,3 +1,3 @@
-Pauth.configure do |config|
+ActiveAuthentication.configure do |config|
   # config.concerns = %w[authenticatable confirmable recoverable registerable trackable]
 end

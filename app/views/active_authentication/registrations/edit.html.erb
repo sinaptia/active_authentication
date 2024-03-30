@@ -1,0 +1,42 @@
+<h1 class="text-4xl font-bold"><%=t ".edit_profile" %></h1>
+
+<% if current_user.unconfirmed? %>
+  <div class="px-3 py-2 mt-3 font-medium text-yellow-500 rounded-lg bg-yellow-50">
+    <%=t ".pending_confirmation", unconfirmed_email: current_user.unconfirmed_email %>
+  </div>
+<% end %>
+
+<%= form_with model: current_user, url: profile_path, data: {turbo: false} do |form| %>
+  <% if current_user.errors.any? %>
+    <div id="error_explanation" class="px-3 py-2 mt-3 font-medium text-red-500 rounded-lg bg-red-50">
+      <h2><%=t "active_authentication.failure.form_errors", errors: pluralize(current_user.errors.count, "error") %></h2>
+      <ul>
+        <% current_user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :email %>
+    <%= form.email_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </div>
+
+  <div>
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation %>
+  </div>
+
+  <div>
+    <%= form.submit t(".save") %>
+  </div>
+<% end %>
+
+<h2 class="text-2xl font-bold"><%=t ".danger_zone" %></h2>
+<%= button_to t(".cancel_account"), profile_path, method: :delete, data: {turbo_confirm: t(".confirm")} %>

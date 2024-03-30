@@ -127,8 +127,8 @@ search:
 # - 'simple_form.{error_notification,required}.:'
 ignore_unused:
   - activerecord.attributes.*
-  - pauth.failure.*
-  - pauth.mailer.*.subject
+  - active_authentication.failure.*
+  - active_authentication.mailer.*.subject
 
 ## Exclude these keys from the `i18n-tasks eq-base' report:
 # ignore_eq_base:
