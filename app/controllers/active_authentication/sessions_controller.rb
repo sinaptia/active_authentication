@@ -10,17 +10,19 @@ class ActiveAuthentication::SessionsController < ApplicationController
   end
 
   def create
-    @user = User.authenticate_by email: params[:email], password: params[:password]
+    @user = scope.authenticate_by email: params[:email], password: params[:password]
 
     if @user.present?
       run_callbacks :successful_sign_in do
         sign_in @user
       end
+
       redirect_to root_path, notice: t(".success")
     else
       run_callbacks :failed_sign_in do
         flash[:alert] = t(".invalid_email_or_password")
       end
+
       render :new, status: :unprocessable_entity
     end
   end

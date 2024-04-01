@@ -14,6 +14,10 @@ module ActiveAuthentication
           user&.increment_failed_attempts
         end
 
+        def scope
+          User.unlocked
+        end
+
         def set_alert
           user = User.find_by email: params[:email]
 

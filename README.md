@@ -77,7 +77,7 @@ Then, to verify if there's an authenticated user, you can use the `user_signed_i
 
 Similarly, you can use `current_user` to access the current authenticated user.
 
-### Configuring views
+### Customizing views
 
 The default views are good enough to get you started, but you'll want to customize them sooner than later. To copy the default views into your app, run the following command:
 

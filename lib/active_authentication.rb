@@ -6,6 +6,7 @@ module ActiveAuthentication
   include ActiveSupport::Configurable
 
   autoload :Controller, "active_authentication/controller"
+  autoload :Current, "active_authentication/current"
   autoload :Model, "active_authentication/model"
 
   module Controller

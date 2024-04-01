@@ -13,7 +13,7 @@ module ActiveAuthentication
     end
 
     def current_user
-      @current_user ||= session[:user_id] && User.find(session[:user_id])
+      Current.user ||= user_from_session
     end
 
     def require_no_authentication
@@ -21,16 +21,28 @@ module ActiveAuthentication
     end
 
     def sign_in(user)
+      reset_session
+      Current.user = user
       session[:user_id] = user.id
     end
 
     def sign_out
       reset_session
-      session[:user_id] = nil
+      Current.user = nil
     end
 
     def user_signed_in?
       current_user.present?
+    end
+
+    private
+
+    def scope
+      User
+    end
+
+    def user_from_session
+      User.find_by id: session[:user_id]
     end
   end
 end

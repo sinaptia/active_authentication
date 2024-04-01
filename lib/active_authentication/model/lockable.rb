@@ -7,6 +7,8 @@ module ActiveAuthentication
         ActiveAuthentication::SessionsController.send :include, ActiveAuthentication::Controller::Lockable
 
         generates_token_for :unlock, expires_in: ActiveAuthentication.unlock_token_expires_in
+
+        scope :unlocked, -> { where locked_at: nil }
       end
 
       def increment_failed_attempts

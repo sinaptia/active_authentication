@@ -22,6 +22,15 @@ class ActiveAuthentication::SessionsControllerTest < ActionDispatch::Integration
     assert_equal user.id, session[:user_id]
   end
 
+  test "the lockable concern prevents an unauthenticated user from signing in if they are locked" do
+    user = users :patricio
+    user.lock
+
+    post session_path, params: {email: user.email, password: "password"}
+
+    assert_response :unprocessable_entity
+  end
+
   test "the trackable concern tracks the user" do
     user = users :patricio
 
