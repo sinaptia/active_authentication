@@ -1,21 +1,14 @@
 ActiveAuthentication.configure do |config|
-  ## Select the concerns you want to use
-  # config.concerns = %w[authenticatable confirmable lockable recoverable registerable trackable]
-
-  # authenticatable
+  # configuration for the authenticatable concern
   # config.min_password_length = 6
 
-  # confirmable
+  # configuration for the confirmable concern
   # config.email_confirmation_token_expires_in = 24.hours
 
-  # lockable
+  # configuration for the lockable concern
   # config.unlock_token_expires_in = 24.hours
   # config.max_failed_attempts = 10
 
-  # recoverable
+  # configuration for the recoverable concern
   # config.password_reset_token_expires_in = 1.hour
-
-  # registerable
-
-  # trackable
 end

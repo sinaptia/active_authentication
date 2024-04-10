@@ -1,3 +1,3 @@
 class User < ApplicationRecord
-  authenticates
+  authenticates_with :confirmable, :lockable, :recoverable, :registerable, :trackable
 end

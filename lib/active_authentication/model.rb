@@ -5,14 +5,16 @@ module ActiveAuthentication
     CONCERNS = %i[authenticatable confirmable lockable recoverable registerable trackable]
 
     class_methods do
-      def authenticates
-        ActiveAuthentication.concerns.each do |concern|
+      def authenticates_with(*concerns)
+        include Authenticatable
+        concerns.each do |concern|
           include const_get(concern.to_s.classify)
         end
       end
+      alias_method :authenticates, :authenticates_with
 
       CONCERNS.each do |concern|
-        define_method(:"#{concern}?") { ActiveAuthentication.concerns.include? concern }
+        define_method(:"#{concern}?") { User.included_modules.include? const_get(concern.to_s.classify) }
       end
     end
   end

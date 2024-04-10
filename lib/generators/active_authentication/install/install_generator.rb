@@ -13,7 +13,7 @@ class ActiveAuthentication::InstallGenerator < Rails::Generators::Base
     invoke "active_record:model", %w[User], migration: false, skip_collision_check: true
 
     if behavior == :invoke
-      inject_into_class "app/models/user.rb", "User", "  authenticates\n"
+      inject_into_class "app/models/user.rb", "User", "  authenticates_with :confirmable, :lockable, :recoverable, :registerable, :trackable\n"
     end
   end
 

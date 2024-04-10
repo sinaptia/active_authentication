@@ -3,7 +3,7 @@ class ActiveAuthentication::ViewsGenerator < Rails::Generators::Base
 
   desc "Generates active_authentication's views."
 
-  class_option :views, aliases: "-v", type: :array, desc: "Views to generate (available: confirmations, passwords, registrations, sessions)"
+  class_option :views, aliases: "-v", type: :array, desc: "Views to generate (available: confirmations, mailer, passwords, registrations, sessions, shared, unlocks)"
 
   def copy_views
     if options[:views]

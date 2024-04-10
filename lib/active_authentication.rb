@@ -27,8 +27,6 @@ module ActiveAuthentication
     autoload :Helpers, "active_authentication/test/helpers"
   end
 
-  config_accessor :concerns, default: %i[authenticatable confirmable lockable recoverable registerable trackable]
-
   # authenticatable
   config_accessor :min_password_length, default: 6
 
@@ -41,8 +39,4 @@ module ActiveAuthentication
 
   # recoverable
   config_accessor :password_reset_token_expires_in, default: 1.hour
-
-  # registerable
-
-  # trackable
 end

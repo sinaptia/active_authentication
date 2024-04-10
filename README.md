@@ -10,7 +10,7 @@ A pure Rails authentication solution.
 
 ### Concerns
 
-* Authenticatable: provides the standard email/password authentication.
+* Authenticatable: provides the standard email/password authentication. It's the only concern that can't be turned off.
 * Confirmable: allows users to confirm their email addresses.
 * Lockable: locks users after a number of failed sign in attempts.
 * Recoverable: allows users to reset their password.
@@ -51,7 +51,7 @@ After installing the gem, you need to generate the `User` model. To generate it,
 $ rails generate active_authentication:install
 ```
 
-This command will generate the `User` model, add the `active_authentication` route, and generate an initializer (`config/initializers/active_authentication.rb`) where you can configure the gem. You will be able to configure the concerns you want for your application among other things.
+This command will generate the `User` model, add the `active_authentication` route, and generate an initializer (`config/initializers/active_authentication.rb`) where you can configure the concerns.
 
 You will need to set up the default url options in your `config/environments/development.rb`:
 
@@ -62,6 +62,20 @@ config.action_mailer.default_url_options = {host: "localhost", port: 3000}
 And the `root` path in `config/routes.rb`.
 
 Finally, run `rails db:migrate`.
+
+### Concerns
+
+If you look at the `User` model (in `app/models/user.rb`), you will notice there's only a sentence:
+
+```ruby
+class User < ApplicationRecord
+  authenticates_with :confirmable, :lockable, :recoverable, :registerable, :trackable
+end
+```
+
+Notice that `:authenticatable` is not in the list. This is because you cannot turn it off.
+
+By default, all concerns are turned on. But you can turn them off by just removing them from the list. If you plan to not use any concerns, you can replace `authenticates_with` with `authenticates`.
 
 ### Filters and helpers
 
@@ -77,7 +91,13 @@ Then, to verify if there's an authenticated user, you can use the `user_signed_i
 
 Similarly, you can use `current_user` to access the current authenticated user.
 
-### Customizing views
+## Customization
+
+### Concerns configuration
+
+When you run the `active_authentication:install` generator, an initializer will be copied to your app at `config/initializers/active_authentication.rb`. There's a section per concern where you can configure certain aspects of their behavior.
+
+### Views
 
 The default views are good enough to get you started, but you'll want to customize them sooner than later. To copy the default views into your app, run the following command:
 

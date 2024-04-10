@@ -2,9 +2,9 @@ module ActionDispatch::Routing
   class Mapper
     def active_authentication
       scope module: :active_authentication do
-        ActiveAuthentication.concerns.each { |concern|
-          send(concern) if respond_to?(concern, true)
-        }
+        ActiveAuthentication::Model::CONCERNS.each do |concern|
+          send(concern) if User.send(:"#{concern}?") && respond_to?(concern, true)
+        end
       end
     end
 
