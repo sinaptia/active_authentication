@@ -283,9 +283,9 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  active_authentication!
   debug (>= 1.0.0)
   i18n-tasks
-  active_authentication!
   puma
   sprockets-rails
   sqlite3
