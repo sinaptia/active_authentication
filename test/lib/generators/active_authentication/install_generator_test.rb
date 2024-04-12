@@ -10,16 +10,30 @@ class ActiveAuthentication::InstallGeneratorTest < Rails::Generators::TestCase
     copy_routes
   end
 
-  test "generates a User model" do
+  test "generates a User model with all the concerns if no argument is passed" do
     run_generator
 
-    assert_file "app/models/user.rb"
+    assert_file "app/models/user.rb", /authenticates_with #{ActiveAuthentication::Model::CONCERNS.map { ":#{_1}" }.join(", ")}/
+  end
+
+  test "generates a User model with the given concerns if passed" do
+    run_generator %w[confirmable lockable]
+
+    assert_file "app/models/user.rb", /authenticates_with :confirmable, :lockable/
   end
 
   test "generates a migration for the User model" do
     run_generator
 
     assert_migration "db/migrate/create_users.rb"
+  end
+
+  test "generates a migration for the User model with the attributes of the unused concerns commented out" do
+    run_generator %w[trackable]
+
+    assert_migration "db/migrate/create_users.rb", /# t.string :unconfirmed_email/
+    assert_migration "db/migrate/create_users.rb", /# t.integer :failed_attempts/
+    assert_migration "db/migrate/create_users.rb", /# t.datetime :locked_at/
   end
 
   test "adds the active_authentication routes" do

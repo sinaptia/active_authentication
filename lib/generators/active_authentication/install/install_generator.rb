@@ -3,6 +3,8 @@ class ActiveAuthentication::InstallGenerator < Rails::Generators::Base
 
   source_root File.expand_path("templates", __dir__)
 
+  argument :concerns, type: :array, default: ActiveAuthentication::Model::CONCERNS.map(&:to_s), banner: "concern concern"
+
   desc "Creates the User model, the active_authentication initializer, and adds the active_authentication route."
 
   def self.next_migration_number(dirname)
@@ -13,12 +15,12 @@ class ActiveAuthentication::InstallGenerator < Rails::Generators::Base
     invoke "active_record:model", %w[User], migration: false, skip_collision_check: true
 
     if behavior == :invoke
-      inject_into_class "app/models/user.rb", "User", "  authenticates_with :confirmable, :lockable, :recoverable, :registerable, :trackable\n"
+      inject_into_class "app/models/user.rb", "User", "  authenticates_with #{concerns.map { ":#{_1}" }.join(", ")}\n"
     end
   end
 
   def generate_migration
-    migration_template "migration.rb", "db/migrate/create_users.rb", migration_version: migration_version, ip_column: ip_column
+    migration_template "migration.rb", "db/migrate/create_users.rb", concerns: concerns, migration_version: migration_version, ip_column: ip_column
   end
 
   def add_route

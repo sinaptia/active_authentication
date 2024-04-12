@@ -51,7 +51,13 @@ After installing the gem, you need to generate the `User` model. To generate it,
 $ rails generate active_authentication:install
 ```
 
-This command will generate the `User` model, add the `active_authentication` route, and generate an initializer (`config/initializers/active_authentication.rb`) where you can configure the concerns.
+This command will generate the `User` model, add the `active_authentication` route, and generate an initializer (`config/initializers/active_authentication.rb`) where you can configure the concerns. By default, this command enables all concerns. If you want to use a subset of the concerns, you can specify them:
+
+```bash
+$ rails generate active_authentication:install confirmable
+```
+
+In this example, only the confirmable concern will be enabled (along with authenticatable, which can't be turned off).
 
 You will need to set up the default url options in your `config/environments/development.rb`:
 
