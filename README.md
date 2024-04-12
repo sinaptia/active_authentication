@@ -15,13 +15,13 @@ A pure Rails authentication solution.
 * Lockable: locks users after a number of failed sign in attempts.
 * Recoverable: allows users to reset their password.
 * Registerable: allows users to sign up and edit their profile.
+* Timeoutable: expires sessions after a period of inactivity.
 * Trackable: tracks users sign in count, timestamps and ip addresses.
 
 Planned concerns:
 
 * MagicLinkable: to allow users to sign in with a magic link.
 * Omniauthable: to allow users to sign up and sign in using a third party service through Omniauth.
-* Timeoutable: to expire sessions after a period of inactivity.
 
 ## Installation
 
@@ -75,7 +75,7 @@ If you look at the `User` model (in `app/models/user.rb`), you will notice there
 
 ```ruby
 class User < ApplicationRecord
-  authenticates_with :confirmable, :lockable, :recoverable, :registerable, :trackable
+  authenticates_with :confirmable, :lockable, :recoverable, :registerable, :timeoutable, :trackable
 end
 ```
 

@@ -42,6 +42,18 @@ class ActiveAuthentication::SessionsControllerTest < ActionDispatch::Integration
     assert_equal user.id, session[:user_id]
   end
 
+  test "the timeoutable concern signs out a user if the session timed out" do
+    user = users :patricio
+
+    post session_path, params: {email: user.email, password: "password"}
+    follow_redirect!
+
+    travel 31.minutes
+
+    get root_path
+    assert_nil session[:user_id]
+  end
+
   test "unauthenticated users shouldn't create a new session if credentials are invalid" do
     post session_path, params: {email: users(:patricio).email, password: "123"}
 

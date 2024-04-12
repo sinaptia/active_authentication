@@ -14,6 +14,7 @@ es:
       already_signed_in: Ya iniciaste sesión.
       form_errors: "%{errors} no permitieron guardar este elemento:"
       locked: Tu cuenta fue bloqueada después de %{count} intentos fallidos. Te enviaremos un email con las instrucciones de desbloqueo.
+      timedout: Tu sesión expiró. Iniciá sesión nuevamente para continuar.
       unauthenticated: Tenés que iniciar sesión antes de continuar.
     mailer:
       email_confirmation_instructions:

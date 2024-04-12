@@ -11,6 +11,7 @@ module ActiveAuthentication
 
   module Controller
     autoload :Lockable, "active_authentication/controller/lockable"
+    autoload :Timeoutable, "active_authentication/controller/timeoutable"
     autoload :Trackable, "active_authentication/controller/trackable"
   end
 
@@ -20,6 +21,7 @@ module ActiveAuthentication
     autoload :Lockable, "active_authentication/model/lockable"
     autoload :Recoverable, "active_authentication/model/recoverable"
     autoload :Registerable, "active_authentication/model/registerable"
+    autoload :Timeoutable, "active_authentication/model/timeoutable"
     autoload :Trackable, "active_authentication/model/trackable"
   end
 
@@ -39,4 +41,7 @@ module ActiveAuthentication
 
   # recoverable
   config_accessor :password_reset_token_expires_in, default: 1.hour
+
+  # timeoutable
+  config_accessor :timeout_in, default: 30.minutes
 end

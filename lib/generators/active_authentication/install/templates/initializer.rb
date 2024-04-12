@@ -11,4 +11,7 @@ ActiveAuthentication.configure do |config|
 
   # configuration for the recoverable concern
   # config.password_reset_token_expires_in = 1.hour
+
+  # configuration for the timeoutable concern
+  # config.timeout_in = 30.minutes
 end
