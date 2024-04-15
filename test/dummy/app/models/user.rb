@@ -1,3 +1,5 @@
 class User < ApplicationRecord
-  authenticates_with :confirmable, :lockable, :recoverable, :registerable, :timeoutable, :trackable
+  has_many :authentications
+
+  authenticates_with :confirmable, :lockable, :omniauthable, :recoverable, :registerable, :timeoutable, :trackable
 end

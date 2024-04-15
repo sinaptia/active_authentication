@@ -13,6 +13,7 @@ A pure Rails authentication solution.
 * Authenticatable: provides the standard email/password authentication. It's the only concern that can't be turned off.
 * Confirmable: allows users to confirm their email addresses.
 * Lockable: locks users after a number of failed sign in attempts.
+* Omniauthable: allows users to sign up and sign in using a third party service through Omniauth. Turned off by default.
 * Recoverable: allows users to reset their password.
 * Registerable: allows users to sign up and edit their profile.
 * Timeoutable: expires sessions after a period of inactivity.
@@ -21,7 +22,7 @@ A pure Rails authentication solution.
 Planned concerns:
 
 * MagicLinkable: to allow users to sign in with a magic link.
-* Omniauthable: to allow users to sign up and sign in using a third party service through Omniauth.
+* Invitable: to allow users to invite other users.
 
 ## Installation
 
@@ -96,6 +97,33 @@ before_action :authenticate_user!
 Then, to verify if there's an authenticated user, you can use the `user_signed_in?` helper.
 
 Similarly, you can use `current_user` to access the current authenticated user.
+
+### Omniauthable
+
+ActiveAuthentication's implementation of OmniAuth allows you to sign in and/or sign up with your third party accounts or sign up with ActiveAuthentication and later connect your third party accounts to ActiveAuthentication's User. To accomplish this, ActiveAuthentication relies on an `Authentication` model which can be created with the `active_authentication:omniauthable` generator.
+
+To set up the omniauthable concern you must configure your OmniAuth providers as you would do with plain OmniAuth. There's no OmniAuth config in ActiveAuthentication. For example, in `config/initializers/omniauth.rb` you would set the middleware:
+
+```ruby
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"]
+  provider :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"]
+  # ... and any other omniauth strategy
+end
+```
+
+And then you need to run the omniauthable generator to generate the `Authentication` model:
+
+```bash
+$ rails g active_authentication:omniauthable
+```
+
+By adding the `:omniauthable` concern to your `User` model, the following routes will be added to your app:
+
+* `/auth/:provider` to redirect your users to the provider consent screen
+* `/auth/:provider/callback` to actually sign in/sign up with the given providers
+
+The sign in/sign up views will show a link to sign in or sign up with each provider you configured if and only if you set the `ActiveAuthentication.omniauth_providers` setting in your ActiveAuthentication initializer.
 
 ## Customization
 

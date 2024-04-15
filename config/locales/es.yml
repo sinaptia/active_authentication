@@ -32,6 +32,11 @@ es:
         subject: Instrucciones de desbloqueo
         unlock: Desbloquear cuenta
         unlock_below: 'Podés desbloquear tu contraseña haciendo click en el siguiente link:'
+    omniauth_callbacks:
+      create:
+        already_linked: Tu cuenta de %{provider} ya fue enlazada.
+        successfully_linked: Tu cuenta de %{provider} fue enlazada exitosamente.
+        successfully_signed_up: Te registraste exitosamente con %{provider}.
     passwords:
       create:
         success: Te enviaremos un email con las instrucciones de para recuperar tu contraseña.
@@ -73,6 +78,7 @@ es:
         send_email_confirmation_instructions: "¿No recibiste las instrucciones de confirmación?"
         send_unlock_instructions: "¿No recibiste las instrucciones de desbloqueo?"
         sign_in: Iniciar sesión
+        sign_in_or_sign_up_with: Iniciar sesión o crear una cuenta con %{provider}
         sign_up: Crear una cuenta
     unlocks:
       create:

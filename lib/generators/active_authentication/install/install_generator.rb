@@ -3,7 +3,7 @@ class ActiveAuthentication::InstallGenerator < Rails::Generators::Base
 
   source_root File.expand_path("templates", __dir__)
 
-  argument :concerns, type: :array, default: ActiveAuthentication::Model::CONCERNS.map(&:to_s), banner: "concern concern"
+  argument :concerns, type: :array, default: %w[confirmable lockable recoverable registerable timeoutable trackable], banner: "concern concern"
 
   desc "Creates the User model, the active_authentication initializer, and adds the active_authentication route."
 

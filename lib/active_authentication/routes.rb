@@ -22,6 +22,11 @@ module ActionDispatch::Routing
       resources :unlocks, param: :token, only: [:new, :create, :show]
     end
 
+    def omniauthable
+      get "auth/:provider", to: "omniauth_callbacks#pass", as: :omniauth
+      get "auth/:provider/callback", to: "omniauth_callbacks#create", as: :omniauth_callback
+    end
+
     def registerable
       resources :registrations, only: [:new, :create]
       resource :profile, only: [:edit, :update, :destroy], path: :profile, controller: :registrations

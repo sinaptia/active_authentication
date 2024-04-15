@@ -20,3 +20,15 @@ end
 class ActionDispatch::IntegrationTest
   include ActiveAuthentication::Test::Helpers
 end
+
+class Rails::Generators::TestCase
+  private
+
+  def copy_routes
+    routes_dir = File.expand_path "config", destination_root
+    routes = File.expand_path routes_dir, "routes.rb"
+
+    FileUtils.mkdir routes_dir
+    FileUtils.cp Rails.root.join("config/routes.rb"), routes
+  end
+end

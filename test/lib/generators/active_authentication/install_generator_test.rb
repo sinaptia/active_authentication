@@ -13,7 +13,7 @@ class ActiveAuthentication::InstallGeneratorTest < Rails::Generators::TestCase
   test "generates a User model with all the concerns if no argument is passed" do
     run_generator
 
-    assert_file "app/models/user.rb", /authenticates_with #{ActiveAuthentication::Model::CONCERNS.map { ":#{_1}" }.join(", ")}/
+    assert_file "app/models/user.rb", /authenticates_with :confirmable, :lockable, :recoverable, :registerable, :timeoutable, :trackable/
   end
 
   test "generates a User model with the given concerns if passed" do
@@ -46,15 +46,5 @@ class ActiveAuthentication::InstallGeneratorTest < Rails::Generators::TestCase
     run_generator
 
     assert_file "config/initializers/active_authentication.rb"
-  end
-
-  private
-
-  def copy_routes
-    routes_dir = File.expand_path "config", destination_root
-    routes = File.expand_path routes_dir, "routes.rb"
-
-    FileUtils.mkdir routes_dir
-    FileUtils.cp Rails.root.join("config/routes.rb"), routes
   end
 end

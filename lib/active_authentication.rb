@@ -19,6 +19,7 @@ module ActiveAuthentication
     autoload :Authenticatable, "active_authentication/model/authenticatable"
     autoload :Confirmable, "active_authentication/model/confirmable"
     autoload :Lockable, "active_authentication/model/lockable"
+    autoload :Omniauthable, "active_authentication/model/Omniauthable"
     autoload :Recoverable, "active_authentication/model/recoverable"
     autoload :Registerable, "active_authentication/model/registerable"
     autoload :Timeoutable, "active_authentication/model/timeoutable"
@@ -38,6 +39,9 @@ module ActiveAuthentication
   # lockable
   config_accessor :unlock_token_expires_in, default: 24.hours
   config_accessor :max_failed_attempts, default: 10
+
+  # omniauthable
+  config_accessor :omniauth_providers, default: []
 
   # recoverable
   config_accessor :password_reset_token_expires_in, default: 1.hour

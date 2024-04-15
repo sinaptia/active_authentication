@@ -32,6 +32,11 @@ en:
         subject: Unlock instructions
         unlock: Unlock your account
         unlock_below: 'You can unlock your account by clicking the link below:'
+    omniauth_callbacks:
+      create:
+        already_linked: Your %{provider} account has already been linked.
+        successfully_linked: Your %{provider} account has been succesfully linked.
+        successfully_signed_up: You have signed up successfully with %{provider}.
     passwords:
       create:
         success: Password reset instructions will be sent to your email.
@@ -73,6 +78,7 @@ en:
         send_email_confirmation_instructions: Didn't receive confirmation instructions?
         send_unlock_instructions: Didn't receive unlock instructions?
         sign_in: Sign in
+        sign_in_or_sign_up_with: Sign in or sign up with %{provider}
         sign_up: Sign up
     unlocks:
       create:
