@@ -21,7 +21,7 @@ module ActiveAuthentication
         def set_alert
           user = User.find_by email: params[:email]
 
-          if user.locked?
+          if user&.locked?
             flash[:alert] = t "active_authentication.failure.locked", count: user.failed_attempts
           end
         end
