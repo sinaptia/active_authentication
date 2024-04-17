@@ -18,7 +18,7 @@ class ActiveAuthentication::OmniauthCallbacksControllerTest < ActionDispatch::In
     sign_in user
 
     assert_no_changes -> { Authentication.count } do
-      get omniauth_callback_path(provider: :developer), env: { "omniauth.auth" => omniauth_hash(user.email) }
+      get omniauth_callback_path(provider: :developer), env: {"omniauth.auth" => omniauth_hash(user.email)}
     end
 
     assert_equal user.id, session[:user_id]
@@ -30,7 +30,7 @@ class ActiveAuthentication::OmniauthCallbacksControllerTest < ActionDispatch::In
     sign_in user
 
     assert_changes -> { Authentication.count } do
-      get omniauth_callback_path(provider: :developer), env: { "omniauth.auth" => omniauth_hash(user.email) }
+      get omniauth_callback_path(provider: :developer), env: {"omniauth.auth" => omniauth_hash(user.email)}
     end
 
     assert_equal user.id, session[:user_id]
@@ -40,7 +40,7 @@ class ActiveAuthentication::OmniauthCallbacksControllerTest < ActionDispatch::In
   test "unauthenticated users that don't have an account can create an account with a third party account and sign in" do
     assert_changes -> { User.count } do
       assert_changes -> { Authentication.count } do
-        get omniauth_callback_path(provider: :developer), env: { "omniauth.auth" => omniauth_hash("test@example.com") }
+        get omniauth_callback_path(provider: :developer), env: {"omniauth.auth" => omniauth_hash("test@example.com")}
       end
     end
 
@@ -52,7 +52,7 @@ class ActiveAuthentication::OmniauthCallbacksControllerTest < ActionDispatch::In
     user = users :patricio
     user.authentications.create provider: :developer, uid: "test"
 
-    get omniauth_callback_path(provider: :developer), env: { "omniauth.auth" => omniauth_hash(user.email) }
+    get omniauth_callback_path(provider: :developer), env: {"omniauth.auth" => omniauth_hash(user.email)}
 
     assert_equal user.id, session[:user_id]
     assert_redirected_to root_path

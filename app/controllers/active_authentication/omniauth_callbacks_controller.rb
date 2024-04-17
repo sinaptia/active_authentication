@@ -16,7 +16,7 @@ class ActiveAuthentication::OmniauthCallbacksController < ApplicationController
       end
     elsif @authentication.user.blank?
       @user = User.find_or_initialize_by email: auth.dig("info", "email")
-      @user.update(password: SecureRandom.hex) if @user.new_record?
+      @user.password = SecureRandom.hex if @user.new_record?
 
       @authentication.update user: @user
 

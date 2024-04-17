@@ -82,7 +82,7 @@ end
 
 Notice that `:authenticatable` is not in the list. This is because you cannot turn it off.
 
-By default, all concerns are turned on. But you can turn them off by just removing them from the list. If you plan to not use any concerns, you can replace `authenticates_with` with `authenticates`.
+By default, all concerns are turned on except omniauthable. But you can turn it on by adding it to the list, and similarly, you can turn any concern off by just removing them from the list. If you plan to not use any concerns, you can replace `authenticates_with` with `authenticates`.
 
 ### Filters and helpers
 
@@ -108,7 +108,7 @@ To set up the omniauthable concern you must configure your OmniAuth providers as
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"]
   provider :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"]
-  # ... and any other omniauth strategy
+  # ... and any other omniauth strategies
 end
 ```
 
@@ -118,12 +118,14 @@ And then you need to run the omniauthable generator to generate the `Authenticat
 $ rails g active_authentication:omniauthable
 ```
 
+The User model has many Authentication models associated, to allow you to connect your user with multiple third party services if required.
+
 By adding the `:omniauthable` concern to your `User` model, the following routes will be added to your app:
 
 * `/auth/:provider` to redirect your users to the provider consent screen
 * `/auth/:provider/callback` to actually sign in/sign up with the given providers
 
-The sign in/sign up views will show a link to sign in or sign up with each provider you configured if and only if you set the `ActiveAuthentication.omniauth_providers` setting in your ActiveAuthentication initializer.
+The sign in and sign up views will show a link to sign in or sign up with each provider you configured if and only if you set the `ActiveAuthentication.omniauth_providers` setting in your ActiveAuthentication initializer.
 
 ## Customization
 
@@ -144,6 +146,26 @@ If you're not using all the concerns, you might want to copy only the views you 
 ```bash
 $ rails generate active_authentication:views -v sessions
 ```
+
+### Omniauthable
+
+By default, ActiveAuthentication stores the `provider`, `uid` and `auth_data` in the `Authentication` model. There are some cases where you want to store, for example, the first name and last name in the `User` model to avoid digging into the `auth_data` hash each time. Or if you have multiple authentications, you might want to pull first and last name on registration and later allow the user to change them. To pull that data from an Authentication object at sign up, you don't really need to change the controller, instead you can add a callback to your Authentication model, like this:
+
+```ruby
+class Authentication < ApplicationRecord
+  before_validation :update_user_attributes, if: ->(auth) { auth.auth_data.present? && auth.user.present? }
+
+  private
+
+  def update_user_attributes
+    first_name, last_name = auth_data.dig("info", "first_name"), auth_data.dig("info", "last_name")
+
+    user.update first_name: first_name, last_name: last_name
+  end
+end
+```
+
+Note: this example assumes `first_name:string` and `last_name:string` have been added to the User model and are required. Optional first_name and last_name can be handled similarly.
 
 ## Contributing
 

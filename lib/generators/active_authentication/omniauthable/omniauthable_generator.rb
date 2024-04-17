@@ -8,10 +8,6 @@ class ActiveAuthentication::OmniauthableGenerator < Rails::Generators::Base
 
     if behavior == :invoke
       inject_into_class "app/models/authentication.rb", "Authentication", "  validates :provider, presence: true\n  validates :uid, presence: true, uniqueness: {scope: :provider}\n"
-
-      if File.exist?("app/model/user.rb")
-        inject_into_class "app/models/user.rb", "User", "  has_many :authentications\n"
-      end
     end
   end
 end
