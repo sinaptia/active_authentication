@@ -6,6 +6,12 @@
   <p><%= link_to t(".sign_up"), new_registration_path %></p>
 <% end %>
 
+<% if User.omniauthable? && (controller_name == "sessions" || controller_name == "registrations") %>
+  <% ActiveAuthentication.omniauth_providers.each do |provider| %>
+    <p><%= link_to t(".sign_in_or_sign_up_with", provider: provider), omniauth_path(provider) %></p>
+  <% end %>
+<% end  %>
+
 <% if User.recoverable? && controller_name != "registrations" && controller_name != "passwords" %>
   <p><%= link_to t(".reset_password"), new_password_path %></p>
 <% end %>
