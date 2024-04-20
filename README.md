@@ -16,7 +16,7 @@ A pure Rails authentication solution.
 * Omniauthable: allows users to sign up and sign in using a third party service through Omniauth. Turned off by default.
 * Recoverable: allows users to reset their password.
 * Registerable: allows users to sign up and edit their profile.
-* Timeoutable: expires sessions after a period of inactivity.
+* Timeoutable: expires sessions after a period of inactivity. Turned off by default.
 * Trackable: tracks users sign in count, timestamps and ip addresses.
 
 Planned concerns:

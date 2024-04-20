@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Install generator now accepts which concerns are enabled. If no concern is given, all concerns are enabled.
+- The timeoutable concern is turned off by default.
 
 ### Fixed
 

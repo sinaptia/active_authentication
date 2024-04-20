@@ -13,7 +13,7 @@ class ActiveAuthentication::InstallGeneratorTest < Rails::Generators::TestCase
   test "generates a User model with all the concerns if no argument is passed" do
     run_generator
 
-    assert_file "app/models/user.rb", /authenticates_with :confirmable, :lockable, :recoverable, :registerable, :timeoutable, :trackable/
+    assert_file "app/models/user.rb", /authenticates_with :confirmable, :lockable, :recoverable, :registerable, :trackable/
   end
 
   test "generates a User model with the given concerns if passed" do
