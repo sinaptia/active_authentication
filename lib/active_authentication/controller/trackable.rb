@@ -5,12 +5,12 @@ module ActiveAuthentication
 
       included do
         set_callback :successful_sign_in, :after, :track
+      end
 
-        private
+      private
 
-        def track
-          current_user.track request
-        end
+      def track
+        current_user.track request
       end
     end
   end

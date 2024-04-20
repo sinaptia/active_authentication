@@ -10,6 +10,7 @@ module ActiveAuthentication
   autoload :Model, "active_authentication/model"
 
   module Controller
+    autoload :Authenticatable, "active_authentication/controller/authenticatable"
     autoload :Lockable, "active_authentication/controller/lockable"
     autoload :Timeoutable, "active_authentication/controller/timeoutable"
     autoload :Trackable, "active_authentication/controller/trackable"
