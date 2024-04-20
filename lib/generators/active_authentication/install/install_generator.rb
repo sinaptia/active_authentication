@@ -50,6 +50,6 @@ class ActiveAuthentication::InstallGenerator < Rails::Generators::Base
   end
 
   def postgresql?
-    ar_config.present? && ar_config["adapter"] == "postgresql"
+    ar_config.present? && ar_config.with_indifferent_access[:adapter] == "postgresql"
   end
 end

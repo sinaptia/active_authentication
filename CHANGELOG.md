@@ -21,3 +21,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Lockable concern raised `NoMethodError` on `sessions#create` because it didn't check the user existed before calling `#locked?`
+- Install generator now makes sure that the adapter is found correctly.
