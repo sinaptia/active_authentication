@@ -20,7 +20,7 @@ module ActiveAuthentication
     autoload :Authenticatable, "active_authentication/model/authenticatable"
     autoload :Confirmable, "active_authentication/model/confirmable"
     autoload :Lockable, "active_authentication/model/lockable"
-    autoload :Omniauthable, "active_authentication/model/Omniauthable"
+    autoload :Omniauthable, "active_authentication/model/omniauthable"
     autoload :Recoverable, "active_authentication/model/recoverable"
     autoload :Registerable, "active_authentication/model/registerable"
     autoload :Timeoutable, "active_authentication/model/timeoutable"
