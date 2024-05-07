@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_15_010510) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_07_190608) do
   create_table "authentications", force: :cascade do |t|
     t.string "uid"
     t.string "provider"
@@ -34,6 +34,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_15_010510) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

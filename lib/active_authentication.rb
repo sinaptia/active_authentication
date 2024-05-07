@@ -47,6 +47,12 @@ module ActiveAuthentication
   # recoverable
   config_accessor :password_reset_token_expires_in, default: 1.hour
 
+  # registerable
+  config_accessor :profile_params, default: ->(controller) {
+    controller.params.require(:user).permit(:email, :password, :password_confirmation)
+  }
+  config_accessor :registration_params, default: profile_params
+
   # timeoutable
   config_accessor :timeout_in, default: 30.minutes
 end
