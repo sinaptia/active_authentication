@@ -133,6 +133,21 @@ The sign in and sign up views will show a link to sign in or sign up with each p
 
 When you run the `active_authentication:install` generator, an initializer will be copied to your app at `config/initializers/active_authentication.rb`. There's a section per concern where you can configure certain aspects of their behavior.
 
+### Customize registration and profile params
+
+If you add extra fields to your User model, you will likely want to allow users to fill in those fields upon registration or when editing their profile. By default, only email, password and password confirmation are allowed. To change this behavior, just add these lines to your `config/initializers/active_authentication.rb` file:
+
+```ruby
+ActiveAuthentication.configure do |config|
+  config.profile_params = ->(controller) {
+    controller.params.require(:user).permit(:first_name, :email, :last_name, :password, :password_confirmation) # first_name and last_name were added in this example
+  }
+  config.registration_params = config.profile_params
+end
+```
+
+We believe that the configuration of a gem should be placed in just one place. For this gem, it's the initializer. The `profile_params` and `registration_params` take a lambda and that lambda receives a controller. Why a lambda? and why does it take a controller? We could have allowed the params to be just an array of symbols instead of the whole `params.require.permit` call, but in edge cases you might want to post-process the required params, or call tap, or whatever. And to be able to call `params.require.permit`, you need to run this lambda in the context of the registrations controller. That's why the lambda receives the controller.
+
 ### Views
 
 The default views are good enough to get you started, but you'll want to customize them sooner than later. To copy the default views into your app, run the following command:

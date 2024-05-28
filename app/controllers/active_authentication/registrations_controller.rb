@@ -7,7 +7,7 @@ class ActiveAuthentication::RegistrationsController < ApplicationController
   end
 
   def create
-    @user = User.new user_params
+    @user = User.new registration_params
 
     if @user.save
       sign_in @user
@@ -21,7 +21,7 @@ class ActiveAuthentication::RegistrationsController < ApplicationController
   end
 
   def update
-    if current_user.update(user_params)
+    if current_user.update(profile_params)
       redirect_to edit_profile_path, notice: t(".success")
     else
       render :edit, status: :unprocessable_entity
@@ -36,7 +36,11 @@ class ActiveAuthentication::RegistrationsController < ApplicationController
 
   private
 
-  def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+  def profile_params
+    ActiveAuthentication.profile_params.call self
+  end
+
+  def registration_params
+    ActiveAuthentication.registration_params.call self
   end
 end
