@@ -1,4 +1,4 @@
-class ActiveAuthentication::ConfirmationsController < ApplicationController
+class ActiveAuthentication::ConfirmationsController < ActiveAuthenticationController
   before_action :require_no_authentication, except: :show
   before_action :set_user, only: :show
 

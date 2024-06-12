@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Make the registration params and profile params configurable.
+- Added `#active_authentication_controller?`. Useful if we want to use `#authenticate_user!` in the application controller but skip the before action if we're in an active_authentication controller.
 
 ## [0.2.0] - 2024-05-02
 

@@ -1,4 +1,4 @@
-class ActiveAuthentication::PasswordsController < ApplicationController
+class ActiveAuthentication::PasswordsController < ActiveAuthenticationController
   before_action :require_no_authentication
   before_action :set_user, only: [:edit, :update]
 

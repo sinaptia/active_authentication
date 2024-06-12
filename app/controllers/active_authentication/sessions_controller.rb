@@ -1,4 +1,4 @@
-class ActiveAuthentication::SessionsController < ApplicationController
+class ActiveAuthentication::SessionsController < ActiveAuthenticationController
   include ActiveSupport::Callbacks
 
   before_action :require_no_authentication, except: :destroy
