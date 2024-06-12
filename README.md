@@ -98,6 +98,12 @@ Then, to verify if there's an authenticated user, you can use the `user_signed_i
 
 Similarly, you can use `current_user` to access the current authenticated user.
 
+If you want to close your application entirely, you can add the before action to your application controller, in conjunction with `active_authentication_controller?`, like this:
+
+```ruby
+before_action :authenticate_user!, unless: :active_authentication_controller?
+```
+
 ### Omniauthable
 
 ActiveAuthentication's implementation of OmniAuth allows you to sign in and/or sign up with your third party accounts or sign up with ActiveAuthentication and later connect your third party accounts to ActiveAuthentication's User. To accomplish this, ActiveAuthentication relies on an `Authentication` model which can be created with the `active_authentication:omniauthable` generator.

@@ -1,4 +1,4 @@
-class ActiveAuthentication::UnlocksController < ApplicationController
+class ActiveAuthentication::UnlocksController < ActiveAuthenticationController
   before_action :require_no_authentication
   before_action :set_user, only: :show
 

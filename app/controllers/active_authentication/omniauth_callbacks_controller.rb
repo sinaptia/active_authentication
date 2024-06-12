@@ -1,4 +1,4 @@
-class ActiveAuthentication::OmniauthCallbacksController < ApplicationController
+class ActiveAuthentication::OmniauthCallbacksController < ActiveAuthenticationController
   def create
     auth = request.env["omniauth.auth"]
     provider = auth["provider"]

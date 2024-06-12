@@ -1,4 +1,4 @@
-class ActiveAuthentication::RegistrationsController < ApplicationController
+class ActiveAuthentication::RegistrationsController < ActiveAuthenticationController
   before_action :require_no_authentication, only: [:new, :create]
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
 

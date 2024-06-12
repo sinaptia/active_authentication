@@ -8,6 +8,10 @@ module ActiveAuthentication
         helper_method :user_signed_in?
       end
 
+      def active_authentication_controller?
+        is_a? ::ActiveAuthenticationController
+      end
+
       def authenticate_user!
         redirect_to new_session_path, alert: t("active_authentication.failure.unauthenticated") unless user_signed_in?
       end
