@@ -6,6 +6,12 @@ module ActiveAuthentication
       mail to: @user.unconfirmed_email
     end
 
+    def magic_link
+      @token, @user = params[:token], params[:user]
+
+      mail to: @user.email
+    end
+
     def password_reset_instructions
       @token, @user = params[:token], params[:user]
 

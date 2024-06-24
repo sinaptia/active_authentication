@@ -9,6 +9,9 @@ ActiveAuthentication.configure do |config|
   # config.unlock_token_expires_in = 24.hours
   # config.max_failed_attempts = 10
 
+  # configuration for the magiclinkable concern
+  # config.magic_link_token_expires_in = 24.hours
+
   # configuration for the recoverable concern
   # config.password_reset_token_expires_in = 1.hour
 

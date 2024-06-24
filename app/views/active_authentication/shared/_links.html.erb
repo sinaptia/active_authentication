@@ -2,6 +2,10 @@
   <p><%= link_to t(".sign_in"), new_session_path %></p>
 <% end %>
 
+<% if controller_name != "magic_links" %>
+  <p><%= link_to t(".send_magic_link"), new_magic_link_path %></p>
+<% end %>
+
 <% if User.registerable? && controller_name != "registrations" %>
   <p><%= link_to t(".sign_up"), new_registration_path %></p>
 <% end %>
