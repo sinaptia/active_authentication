@@ -1,0 +1,14 @@
+<h1 class="text-4xl font-bold"><%=t ".send_magic_link" %></h1>
+
+<%= form_with url: magic_links_path, data: {turbo: false} do |form| %>
+  <div>
+    <%= form.label :email, t("activerecord.attributes.user.email") %>
+    <%= form.email_field :email %>
+  </div>
+
+  <div>
+    <%= form.submit t(".send_magic_link") %>
+  </div>
+<% end %>
+
+<%= render "active_authentication/shared/links" %>

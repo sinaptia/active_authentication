@@ -16,12 +16,26 @@ es:
       locked: Tu cuenta fue bloqueada después de %{count} intentos fallidos. Te enviaremos un email con las instrucciones de desbloqueo.
       timedout: Tu sesión expiró. Iniciá sesión nuevamente para continuar.
       unauthenticated: Tenés que iniciar sesión antes de continuar.
+    magic_links:
+      create:
+        success: Te enviaremos un email con un enlace mágico para iniciar sesión.
+      new:
+        send_magic_link: Enviar enlace mágico
+      set_user:
+        invalid_token: El enlace mágico es inválido.
+      show:
+        success: Inicio de sesión existoso.
     mailer:
       email_confirmation_instructions:
         confirm_email: Confirmar mi cuenta
         confirm_email_below: 'Podés confirmar tu cuenta haciendo click en el siguiente link:'
         hello: Hola, %{email}!
         subject: Instrucciones de confirmación
+      magic_link:
+        hello: Hola, %{email}!
+        magic_link_below: 'Podés iniciar sesión haciendo click en el siguiente link:'
+        sign_in: Iniciar sesión
+        subject: Enlace mágico
       password_reset_instructions:
         hello: Hola, %{email}!
         reset_password: Recuperar contraseña
@@ -76,6 +90,7 @@ es:
       links:
         reset_password: Recuperar contraseña
         send_email_confirmation_instructions: "¿No recibiste las instrucciones de confirmación?"
+        send_magic_link: Enviarme un enlace mágico
         send_unlock_instructions: "¿No recibiste las instrucciones de desbloqueo?"
         sign_in: Iniciar sesión
         sign_in_or_sign_up_with: Iniciar sesión o crear una cuenta con %{provider}

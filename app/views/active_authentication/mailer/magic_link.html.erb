@@ -1,0 +1,5 @@
+<p><%=t ".hello", email: @user.email %></p>
+
+<p><%=t ".magic_link_below" %></p>
+
+<p><%= link_to t(".sign_in"), magic_link_url(token: @token) %></p>

@@ -25,7 +25,7 @@ class ActiveAuthentication::ConfirmationsControllerTest < ActionDispatch::Integr
     assert_redirected_to root_path
   end
 
-  test "unauthanteicted users should not receive an email if they don't enter an email" do
+  test "unauthenticated users should not receive an email if they don't enter an email" do
     assert_no_emails do
       post confirmations_path, params: {email: ""}
     end

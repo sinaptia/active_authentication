@@ -2,7 +2,7 @@ module ActiveAuthentication
   module Model
     extend ActiveSupport::Concern
 
-    CONCERNS = %i[authenticatable confirmable lockable omniauthable recoverable registerable timeoutable trackable]
+    CONCERNS = %i[authenticatable confirmable lockable magiclinkable omniauthable recoverable registerable timeoutable trackable]
 
     class_methods do
       def authenticates_with(*concerns)

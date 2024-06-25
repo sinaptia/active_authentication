@@ -10,6 +10,14 @@ class ActiveAuthentication::MailerTest < ActionMailer::TestCase
     assert_equal [user.unconfirmed_email], mail.to
   end
 
+  test "magic_link" do
+    user = users :patricio
+
+    mail = ActiveAuthentication::Mailer.with(token: "test-token", user: user).magic_link
+
+    assert_equal [user.email], mail.to
+  end
+
   test "password_reset_instructions" do
     user = users :patricio
 

@@ -7,6 +7,13 @@ class ActiveAuthentication::MailerPreview < ActionMailer::Preview
     ActiveAuthentication::Mailer.with(token: "test-token", user: user).email_confirmation_instructions
   end
 
+  # Preview this email at http://localhost:3000/rails/mailers/active_authentication/mailer/magic_link
+  def magic_link
+    user = User.create email: "patriciomacadden@gmail.com", password: "password"
+
+    ActiveAuthentication::Mailer.with(token: "test-token", user: user).magic_link
+  end
+
   # Preview this email at http://localhost:3000/rails/mailers/active_authentication/mailer/password_reset_instructions
   def password_reset_instructions
     user = User.create email: "patriciomacadden@gmail.com", password: "password"
