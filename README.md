@@ -13,6 +13,7 @@ A pure Rails authentication solution.
 * Authenticatable: provides the standard email/password authentication. It's the only concern that can't be turned off.
 * Confirmable: allows users to confirm their email addresses.
 * Lockable: locks users after a number of failed sign in attempts.
+* MagicLinkable: allows users to sign in with a magic link.
 * Omniauthable: allows users to sign up and sign in using a third party service through Omniauth. Turned off by default.
 * Recoverable: allows users to reset their password.
 * Registerable: allows users to sign up and edit their profile.
@@ -21,7 +22,6 @@ A pure Rails authentication solution.
 
 Planned concerns:
 
-* MagicLinkable: to allow users to sign in with a magic link.
 * Invitable: to allow users to invite other users.
 
 ## Installation

@@ -16,12 +16,26 @@ en:
       locked: Your account has been locked after %{count} failed attempts. Unlock instructions will be sent to your email.
       timedout: Your session expired. Sign in again to continue.
       unauthenticated: You need to sign in or sign up before continuing.
+    magic_links:
+      create:
+        success: Magic link will be sent to your email.
+      new:
+        send_magic_link: Send magic link
+      set_user:
+        invalid_token: Magic link is invalid.
+      show:
+        success: Signed in successfully.
     mailer:
       email_confirmation_instructions:
         confirm_email: Confirm my account
         confirm_email_below: 'You can confirm your account email by clicking the link below:'
         hello: Hello, %{email}!
         subject: Confirmation instructions
+      magic_link:
+        hello: Hello, %{email}!
+        magic_link_below: 'You can sign in to your account by clicking the link below:'
+        sign_in: Sign in
+        subject: Magic link
       password_reset_instructions:
         hello: Hello, %{email}!
         reset_password: Reset your password
@@ -76,6 +90,7 @@ en:
       links:
         reset_password: Reset password
         send_email_confirmation_instructions: Didn't receive confirmation instructions?
+        send_magic_link: Send me a magic link
         send_unlock_instructions: Didn't receive unlock instructions?
         sign_in: Sign in
         sign_in_or_sign_up_with: Sign in or sign up with %{provider}
