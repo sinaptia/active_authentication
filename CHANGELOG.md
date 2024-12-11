@@ -13,6 +13,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `#active_authentication_controller?`. Useful if we want to use `#authenticate_user!` in the application controller but skip the before action if we're in an active_authentication controller.
 - The magiclinkable concern.
 
+## [0.3.0] - 2024-12-11
+
+### Added
+
+- Support for rails 8
+
 ## [0.2.0] - 2024-05-02
 
 ### Added

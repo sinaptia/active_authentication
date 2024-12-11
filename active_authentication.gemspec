@@ -19,6 +19,6 @@ Gem::Specification.new do |spec|
 
   spec.licenses = ["MIT"]
 
-  spec.add_dependency "rails", "~> 7.0"
+  spec.add_dependency "rails", ">= 7.0"
   spec.add_dependency "bcrypt", "~> 3.1"
 end
