@@ -13,6 +13,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `#active_authentication_controller?`. Useful if we want to use `#authenticate_user!` in the application controller but skip the before action if we're in an active_authentication controller.
 - The magiclinkable concern.
 
+
+### Fixed
+
+- The shared links errored out when the magiclinkable concern wasn't included in the user.
+
 ## [0.3.0] - 2024-12-11
 
 ### Added
